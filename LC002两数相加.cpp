@@ -44,7 +44,38 @@ void printList(ListNode *head) {
 // =====================================================================
 class Solution {
 public:
-    vector<int> solve(vector<int> &nums, int target) {
+    ListNode *solve(ListNode *l1, ListNode *l2) {
+        ListNode *dummy = new ListNode();
+        ListNode *cur = dummy;
+        int carry = 0;
+
+        while (l1 || l2 || carry != 0) {
+            int val1 = 0;
+            if (l1) {
+                val1 = l1->val;
+            }
+
+            int val2 = 0;
+            if (l2) {
+                val2 = l2->val;
+            }
+
+            int sum = val1 + val2 + carry;
+            ListNode *nextNode = new ListNode(sum % 10);
+            carry = sum / 10;
+            cur->next = nextNode;
+            cur = cur->next;
+
+            if (l1) {
+                l1 = l1->next;
+            }
+
+            if (l2) {
+                l2 = l2->next;
+            }
+        }
+
+        return dummy->next;
     }
 };
 
@@ -52,4 +83,8 @@ public:
 // 主函数: 输入 → 调用 Solution → 输出
 // =====================================================================
 int main() {
+    ListNode *l1 = buildList({9, 9, 9, 9, 9, 9, 9});
+    ListNode *l2 = buildList({9, 9, 9, 9});
+    ListNode *result = Solution().solve(l1, l2);
+    printList(result);
 }
