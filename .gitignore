@@ -1,0 +1,55 @@
+# ========================
+# 编译输出
+# ========================
+*.exe
+*.out
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+
+# ========================
+# CMake 构建目录
+# ========================
+cmake-build-*/
+build/
+out/
+
+# CMake 生成文件
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# ========================
+# CLion / JetBrains IDE
+# ========================
+.idea/
+
+# ========================
+# Windows 系统文件
+# ========================
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ========================
+# VS Code（如果偶尔用到）
+# ========================
+.vscode/
+
+# ========================
+# 调试 / 临时文件
+# ========================
+*.log
+*.tmp
+*.bak
+*.swp
+*~
