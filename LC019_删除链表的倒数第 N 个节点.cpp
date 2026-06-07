@@ -41,7 +41,23 @@ void printList(ListNode *head) {
 // =====================================================================
 class Solution {
 public:
-    vector<int> solve(vector<int> &nums, int target) {
+    ListNode *solve(ListNode *head, int n) {
+        ListNode *dummy = new ListNode(0, head);
+        ListNode *fast = dummy;
+        ListNode *slow = dummy;
+
+        int step = n;
+        while (step-- && fast != nullptr) {
+            fast = fast->next;
+        }
+
+        while (fast->next != nullptr) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+
+        slow->next = slow->next->next;
+        return dummy->next;
     }
 };
 
@@ -49,4 +65,8 @@ public:
 // 主函数: 输入 → 调用 Solution → 输出
 // =====================================================================
 int main() {
+    vector<int> nums = {1, 2, 3, 4, 5};
+    ListNode *head = buildList(nums);
+    ListNode *result = Solution().solve(head, 2);
+    printList(result);
 }
